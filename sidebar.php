@@ -120,16 +120,16 @@
 
     <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="#"><i class="fa-solid fa-house navicon"></i>Dashboard</a>
+          <a class="nav-link" aria-current="page" href="dashboard.php"><i class="fa-solid fa-house navicon"></i>Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="inventory.ph"><i class="fa-solid fa-boxes-stacked navicon"></i>Inventory Items</a>
+          <a class="nav-link" aria-current="page" href="inventory.php"><i class="fa-solid fa-boxes-stacked navicon"></i>Inventory Items</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="#"><i class="fa-solid fa-boxes-packing navicon"></i>Supplier</a>
+          <a class="nav-link" aria-current="page" href="supplier.php"><i class="fa-solid fa-boxes-packing navicon"></i>Supplier</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="#"><i class="fa-solid fa-bug navicon"></i>Report</a>
+          <a class="nav-link" aria-current="page" href="report.php"><i class="fa-solid fa-bug navicon"></i>Report</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="#"><i class="fa-solid fa-gear navicon"></i>Setting</a>
