@@ -1,14 +1,52 @@
 <?php include 'sidebar.php' ?>
 
+<!-- CSS Style -->
+ <style>
+
+ </style>
+
 <!-- Main content-->
 <div class="maincontent">
+
     <div class="table-container">
+
+        <div class="add-list">
+                  <table cellpadding="10" cellspacing="10">
+                    <tbody>
+                        <tr>
+                            <th><strong>SKU</strong></th>
+                            <th><strong>Product Name</strong></th>
+                            <th><strong>Description</strong></th>
+                            <th><strong>Category</strong></th>
+                            <th><strong>Quantity</strong></th>
+                            <th><strong>Date Received</strong></th>
+                            <th><strong>Supplier</strong></th>
+                            <th><strong>Action</strong></th>
+                        </tr>
+
+                        <tr>
+                            <td contentEditable="true" data-id="product_sku"></td>
+                            <td contentEditable="true" data-id="product_name"></td>
+                            <td contentEditable="true" data-id="product_description"></td>
+                            <td contentEditable="true" data-id="product_category"></td>
+                            <td contentEditable="true" data-id="product_quantity"></td>
+                            <td contentEditable="true" data-id="product_date_received"></td>
+                            <td contentEditable="true" data-id="product_supplier"></td>
+                            <td contentEditable="true" data-id="product_action"></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
           <!-- Button --> 
                 <div class="clickable-button">
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add Items</button>
                 </div>
+            </div>
+
+    <!-- list items view-->
             <table id="example" class="table">
-            <thead>
+            <thead id="ajax-response">
                 <tr>
                     <th>SKU</th>
                     <th>Product Name</th>
@@ -17,17 +55,19 @@
                     <th>Quantity</th>
                     <th>Date Received</th>
                     <th>Supplier</th>
+                    <th>Action</th>
                 </tr>
             </thead>
 
             <tbody>
                 <tr>
-                    <td data-search="">#245</td>
-                    <td>PC</td>
-                    <td>lorem</td>
-                    <td>Hardware</td>
-                    <td data-order="1323129600">5</td>
-                    <td data-order="145600">June 16, 1991</td>
+                    <td data-id="product_sku" data-search="">#245</td>
+                    <td data-id="product_name">PC</td>
+                    <td data-id="product_description">lorem</td>
+                    <td data-id="product_category">Hardware</td>
+                    <td data-id="product_quantity" data-order="1323129600">5</td>
+                    <td data-id="product_date_received" data-order="145600">June 16, 1991</td>
+                    <td data-id="product_supplier">ABS</td>
                     <td>
                         <button class="edit-btn">Edit</button>
                         <button class="delete-btn">Delete</button>
