@@ -1,41 +1,41 @@
 <?php
+// Database credentials
+$servername = "localhost";
+$username = "root"; // Make sure to replace with your actual username
+$password = ""; // Make sure to replace with your actual password
+$dbname = "InventoryData"; // Replace with your database name
 
-class DBconfig {
-    private $host;
-    private $user;
-    private $password;
-    private $database;
-    private $conn;
+// Create connection
+$conn = new mysqli("localhost", "root", "", "InventoryData");
 
-    public function __construct($host, $user, $password, $database) {
-        $this->host = $host;
-        $this->user = $user;
-        $this->password = $password;
-        $this->database = $database;
-        $this->conn = $this->connectDB();
-    }
-
-    private function connectDB() {
-        $conn = mysqli_connect($this->host, $this->user, $this->password, $this->database);
-        if ($conn === false) {
-          // Handle connection error
-          die("ERROR: Could not  connect database." . mysqli_connect());
-    }
-    return $conn;
-  }
-
-  // Method to read data from a table
-    public function readData($sql) {
-      $result = mysqli_query($this->conn, $sql);
-      $data =array();
-      if ($result && mysqli_num_rows ($result) > 0) {
-        while($row = mysqli_fetch_assoc($result)) {
-          $data[] = $row;
-        }
-      }
-        return $data;
-    }
-    // You should also have methods for insert, update, delete, etc.
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 
+// Get the form data sent via AJAX POST
+// Use 'isset' to check if the data exists before accessing it
+$product_sku = isset($_POST['product_sku']) ? $_POST['product_sku'] : null;
+$product_name = isset($_POST['product_name']) ? $_POST['product_name'] : null;
+$product_quantity = isset($_POST['product_quantity']) ? $_POST['product_quantity'] : null;
+$product_date_received = isset($_POST['product_date_received']) ? $_POST['product_date_received'] : null;
+$product_location = isset($_POST['product_location']) ? $_POST['product_location'] : null;
+
+// Use a prepared statement to prevent SQL injection
+$sql = "INSERT INTO  inventoryitems (sku, product_name, quantity, date_received, product_location) VALUES (?, ?, ?, ?, ?)";
+$stmt = $conn->prepare($sql);
+
+// Bind the parameters to the statement
+$stmt->bind_param("issss", $product_sku, $product_name, $product_quantity, $product_date_received, $product_location);
+
+// Execute the statement and check for success
+if ($stmt->execute()) {
+    echo "New record added successfully!";
+} else {
+    echo "Error: " . $stmt->error;
+}
+
+// Close the statement and connection
+$stmt->close();
+$conn->close();
 ?>
