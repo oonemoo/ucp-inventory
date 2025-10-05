@@ -5,6 +5,7 @@
 <!-- Main content-->
 <div class="maincontent">
     <div class="table-container">
+        
           <!-- Button --> 
                 <div class="clickable-button">
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add Items</button>
