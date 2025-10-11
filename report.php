@@ -21,53 +21,62 @@
             grid-template-columns: 1fr 1fr;
             gap: 20px;
         }
+        .lorem-box-span {
+            grid-column: 1 / span 2;
+        }
     </style>
 
     <div class="maincontent">
         <h3>Reports</h3>
-        <div class="box-container">
+
             <div class="grid-container grid-item">
                     <header>
                         
                     </header>
 
-                    <section class="overview">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, eius ut at ratione aperiam qui accusamus sapiente magnam, rerum totam sunt quis non, natus tempora vel itaque voluptates nam reprehenderit.</p>
-                    </section>
+                    <div class="box-container grid-item lorem-box-span">
+                        <section class="overview">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, eius ut at ratione aperiam qui accusamus sapiente magnam, rerum totam sunt quis non, natus tempora vel itaque voluptates nam reprehenderit.</p>
+                        </section>
+                    </div>
+                     
+                    <div class="box-container grid-item">
+                        <section class="monthly-performance">
+                            <canvas id="myLineChart" width="400" height="200"></canvas>
+                            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                            <!--Line Chart -->
+                            <script>
+                                const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+                                const data = {
+                                labels: labels,
+                                datasets: [{
+                                    label: 'My First Dataset',
+                                    data: [65, 59, 80, 81, 56, 55, 40],
+                                    fill: false,
+                                    borderColor: 'rgb(75, 192, 192)',
+                                    tension: 0.1
+                                }]
+                                };
 
-                    <section class="monthly-performance">
-                        <canvas id="myLineChart" width="400" height="200"></canvas>
-                        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                        <!--Line Chart -->
-                        <script>
-                            const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-                            const data = {
-                            labels: labels,
-                            datasets: [{
-                                label: 'My First Dataset',
-                                data: [65, 59, 80, 81, 56, 55, 40],
-                                fill: false,
-                                borderColor: 'rgb(75, 192, 192)',
-                                tension: 0.1
-                            }]
-                            };
+                                const config = {
+                                type: 'line',
+                                data: data,
+                                };
 
-                            const config = {
-                            type: 'line',
-                            data: data,
-                            };
-
-                            const ctx = document.getElementById('myLineChart').getContext('2d');
-                            const myLineChart = new Chart(ctx, config);
-                        </script>
+                                const ctx = document.getElementById('myLineChart').getContext('2d');
+                                const myLineChart = new Chart(ctx, config);
+                            </script>
+                        </div>
             
-                    </section>
+                    <div class="box-container grid-item">
+                        </section>
 
-                    <section>
+                        <section>    
+                    </div>
                     
-                    </section>
+                    
+                </section>
             </div>                    
-        </div>
     </div>
 
 </body>
