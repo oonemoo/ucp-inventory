@@ -1,204 +1,270 @@
-<?php include 'sidebar.php' ?>
+<?php include 'sidebar.php'; ?>
 
-<input type="number" class="form-control" id="serial">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Inventory Page</title>
 
-<!-- Main content-->
+  
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.3.4/css/dataTables.dataTables.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  
+  <link rel="stylesheet" href="asset/css/inventorystyle.css">
+</head>
+
+<body>
+
 <div class="maincontent">
-    <div class="table-container">
-        
-          <!-- Button --> 
-                <div class="clickable-button">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add Items</button>
-                </div>
-            <table id="example" class="table">
-                <thead>
-                    <tr>
-                        <th>SKU</th>
-                        <th>Product Name</th>
-                        <th>Description</th>
-                        <th>Category</th>
-                        <th>Quantity</th>
-                        <th>Date Received</th>
-                        <th>Supplier</th>
-                        <th>Location</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
+  <div class="table-container">
+    
+    
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h1 class="mb-0">Inventory Items</h1>
+      <button id="addItemBtn" class="btn btn-success">
+        <i class="fas fa-plus"></i> Add Items
+      </button>
 
-                <tbody>
-                    <tr>
-                        <td data-search="">#245</td>
-                        <td>PC</td>
-                        <td>lorem</td>
-                        <td>Hardware</td>
-                        <td data-order="1323129600">5</td>
-                        <td data-order="145600">June 16, 1991</td>
-                        <td>ABC Supplier</td>
-                        <td>Warehouse</td>
-                        <td>
-                            <button class="edit-btn">Edit</button>
-                            <button class="delete-btn">Delete</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-    </div>
 
-    <!-- Content of the Add Button-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Items</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="add-items">
-                    <div class="mb-3">
-                    <div class="mb-3">
-                        <label for="serial" class="col-form-label">SKU:</label>
-                        <input type="number" class="form-control" id="serial"name="product_sku">
-                    </div>
-                        <label for="item-name" class="col-form-label">Product Name:</label>
-                        <input type="text" class="form-control" id="name" name="product_name">
-                    </div>
-                    </div>
-                        <label for="item-name" class="col-form-label">Description:</label>
-                        <input type="text" class="form-control" id="description" name="product_description">
-                    </div>
-                    </div>
-                        <label for="item-name" class="col-form-label">Category:</label>
-                        <input type="text" class="form-control" id="category" name="product_category">
-                    </div>
-                    <div class="mb-3">
-                        <label for="quantity" class="col-form-label">QTY:</label>
-                        <input type="number" class="form-control" id="quantity" name="product_qty">
-                    </div>
-                    <div class="mb-3">
-                        <label for="date" class="col-form-label">Date Received:</label>
-                        <input type="date" class="form-control" id="date" name="date_received">
-                    </div>
-                    <div class="mb-3">
-                        <label for="location" class="col-form-label">Supplier:</label>
-                        <input type="text" class="form-control" id="supplier" name="product_supplier">
-                    </div>
-                    <div class="mb-3">
-                        <label for="location" class="col-form-label">Location:</label>
-                        <input type="text" class="form-control" id="location" name="product_location">
-                    </div>
-                </form>
-            </div>
-            
-            <form id="add-items">
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    
-                    <form action="submit.php" method="POST">
-                        <button type="submit" class="btn btn-primary">Add</button>
-                    </form>
-                </div>
-            </form>
-
-        </div>
     </div>
 
     
+      <table id="inventoryTable" class="table table-striped table-bordered w-100">
+      <thead>
+        <tr>
+          <th>SKU</th>
+          <th>Product Name</th>
+          <th>Description</th>
+          <th>Category</th>
+          <th>Quantity</th>
+          <th>Date Purchased</th>
+          <th>Warranty Validity</th>
+          <th>Supplier</th>
+          <th>Department Deployed</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+      </tbody>
+    </table>
+
+  </div>
 </div>
 
-     <!-- JQuery CDN -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
-    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <!-- Add, Edit and Delete button action -->
-    <script>
-    $(document).ready(function () {
-        var table = $('#example').DataTable();
+<div class="modal fade" id="itemModal" tabindex="-1" aria-labelledby="itemModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form id="item-form" method="POST" action="config/save_item.php">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="itemModalLabel">Add New Item</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="item-id" name="id" value="">
+          <div class="mb-3">
+            <label class="form-label">SKU</label>
+            <input type="number" name="sku" id="item-sku" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Product Name</label>
+            <input type="text" name="product_name" id="item-name" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Description</label>
+            <input type="text" name="description" id="item-description" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Category</label>
+            <input type="text" name="category" id="item-category" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Quantity</label>
+            <input type="number" name="quantity" id="item-quantity" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Date Purchased</label>
+            <input type="date" name="date_purchased" id="item-date-purchased" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Warranty Validity</label>
+            <input type="date" name="warranty" id="item-warranty" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Supplier</label>
+            <select name="supplier" id="item-supplier" class="form-select" required>
+              <option value="">Select Supplier</option>
+              
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Department Deployed</label>
+            <input type="text" name="department" id="item-department" class="form-control">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" id="save-btn" class="btn btn-success">Save Item</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
 
-        // Delete row
-        $('#example tbody').on('click', '.delete-btn', function () {
-            if (confirm("Are you sure you want to delete this row?")) {
-                table.row($(this).parents('tr')).remove().draw();
-            }
-        });
 
-        // Edit row
-        $('#example tbody').on('click', '.edit-btn', function () {
-            let $row = $(this).closest('tr');
-            let $tds = $row.find('td').not(':last');
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/2.3.4/js/dataTables.js"></script>
+<script>
+$(document).ready(function() {
+  loadSuppliersDropdown();
+  var table = $('#inventoryTable').DataTable({
+    ajax: 'config/fetch_inventory.php',
+    columns: [
+      { title: "SKU" },
+      { title: "Product Name" },
+      { title: "Description" },
+      { title: "Category" },
+      { title: "Quantity" },
+      { title: "Date Purchased" },
+      { title: "Warranty Validity" },
+      { title: "Supplier" },
+      { title: "Department Deployed" },
+      { title: "Action", orderable: false, searchable: false }
+    ]
+  });
 
-            if ($(this).text() === 'Edit') {
-                $tds.each(function () {
-                    let txt = $(this).text();
-                    $(this).html('<input type="text" value="' + txt + '">');
-                });
-                $(this).text('Save');
-            } else {
-                $tds.each(function () {
-                    let inputVal = $(this).find('input').val();
-                    $(this).html(inputVal);
-                });
-                $(this).text('Edit');
-            }
-        });
+  
+  $('#addItemBtn').on('click', function() {
+    $('#item-form')[0].reset();          
+    $('#item-id').val('');               
+    $('#itemModalLabel').text('Add New Item');
+    $('#save-btn').text('Add Item');
+    $('#itemModal').modal('show');
+  });
+
+  
+  $('#inventoryTable tbody').on('click', '.edit-btn', function() {
+    var id = $(this).data('id');
+
+    
+    $.ajax({
+      url: 'config/get_item.php',
+      type: 'GET',
+      data: { id: id },
+      dataType: 'json',
+      success: function(data) {
+        
+        $('#item-id').val(data.id);
+        $('#item-sku').val(data.sku);
+        $('#item-name').val(data.product_name);
+        $('#item-description').val(data.description);
+        $('#item-category').val(data.category);
+        $('#item-quantity').val(data.quantity);
+        $('#item-date-purchased').val(data.date_purchased);
+        $('#item-warranty').val(data.warranty_validity);
+        $('#item-supplier').val(data.supplier);
+        $('#item-department').val(data.department_deployed);
+
+        $('#itemModalLabel').text('Edit Item');
+        $('#save-btn').text('Update Item');
+        $('#itemModal').modal('show');
+      },
+      error: function() {
+        alert('Failed to fetch item data.');
+      }
     });
-    </script>
+  });
 
-    <!-- AJAX script-->
-    <script>
-       $(document).ready(function () {
-        $('#add-items').on('submit', function (e) {
-            e.preventDefault();
+  
+  $('#item-form').on('submit', function(e) {
+    e.preventDefault();
+    var formData = $(this).serialize();
 
-            $.ajax ({
-                url:'submit.php',
-                type: 'POST',
-                data: $(this).serialize(),
-                success: function (res) {
-                        // optional: check if response is successful
-                        if (res === 'success') {
-                            // Extract values from the formData
-                            const rowData = {};
-                            formData.forEach(field => {
-                                rowData[field.name] = field.value;
-                            });
+    $.post('config/save_item.php', formData, function(response) {
+      $('#itemModal').modal('hide');
+      table.ajax.reload(null, false);
+      alert(response.message || 'Item saved successfully');
+    }, 'json').fail(function() {
+      alert('Failed to save item.');
+    });
+  });
+});
 
-                            // Build the new row HTML
-                            const newRow = `
-                            <tr>
-                                <td>${rowData.product_sku}</td>
-                                <td>${rowData.product_name}</td>
-                                <td>${rowData.product_description}</td>
-                                <td>${rowData.product_category}</td>
-                                <td>${rowData.product_qty}</td>
-                                <td>${rowData.date_received}</td>
-                                <td>${rowData.product_supplier}</td>
-                                <td>${rowData.product_location}</td>
-                                <td>
-                                    <button class="edit-btn">Edit</button>
-                                    <button class="delete-btn">Delete</button>
-                                </td>
-                            </tr>
-                        `;
 
-                        // Add to the DataTable
-                        $('#example').DataTable().row.add($(newRow)).draw();
+$('#inventoryTable tbody').on('click', '.delete-btn', function() {
+  const id = $(this).data('id');
 
-                        // Reset form and close modal
-                        $('#add-items')[0].reset();
-                        $('#exampleModal').modal('hide');
-                    } else {
-                        alert('Failed to add item: ' + res);
-                    }
-                },
-                error: function () {
-                    alert('An error occurred while adding the item.');
-                }
-            });
-        });
-       });
+  if (confirm('Are you sure you want to delete this item?')) {
+    $.ajax({
+      url: 'config/delete_item.php',
+      type: 'POST',
+      data: { id: id },
+      success: function(response) {
+        const res = JSON.parse(response);
+        if (res.success) {
+          $('#inventoryTable').DataTable().ajax.reload(null, false);
+          alert('Item deleted successfully.');
+        } else {
+          alert('Failed to delete item.');
+        }
+      },
+      error: function() {
+        alert('Server error while deleting item.');
+      }
+    });
+  }
+});
 
-    </script>
+</script>
+
+<script>
+function loadSuppliersDropdown(selected = "") {
+  $.getJSON('config/fetch_suppliers_list.php', function(data) {
+    let $select = $('#item-supplier');
+    $select.empty().append('<option value="">Select Supplier</option>');
+
+    data.forEach(function(supplier) {
+      const selectedAttr = (supplier.name === selected) ? 'selected' : '';
+      $select.append(`<option value="${supplier.name}" ${selectedAttr}>${supplier.name}</option>`);
+    });
+  });
+}
+
+
+$('#addItemBtn').on('click', function () {
+  $('#item-form')[0].reset();
+  $('#item-id').val('');
+  $('#itemModalLabel').text('Add New Item');
+  $('#save-btn').text('Save Item');
+  loadSuppliersDropdown(); 
+  $('#itemModal').modal('show');
+});
+
+
+function openEditModal(itemData) {
+  $('#item-id').val(itemData.id);
+  $('#item-sku').val(itemData.sku);
+  $('#item-name').val(itemData.product_name);
+  $('#item-description').val(itemData.description);
+  $('#item-category').val(itemData.category);
+  $('#item-quantity').val(itemData.quantity);
+  $('#item-date-purchased').val(itemData.date_purchased);
+  $('#item-warranty').val(itemData.warranty_validity);
+  $('#item-department').val(itemData.department_deployed);
+
+  loadSuppliersDropdown(itemData.supplier); 
+  $('#itemModalLabel').text('Edit Item');
+  $('#save-btn').text('Update Item');
+  $('#itemModal').modal('show');
+}
+</script>
+
+
 
 </body>
 </html>

@@ -1,5 +1,5 @@
 <?php
-include 'dbconfig.php'; // Your DB connection file
+include 'dbconfig.php'; 
 
 $user_id = $_POST['user_id'];
 $action = $_POST['action'];

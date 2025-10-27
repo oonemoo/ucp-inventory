@@ -1,0 +1,82 @@
+* {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    .maincontent {
+      height: 100vh;
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .box-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background-color: rgba(255, 255, 255, 0.44);
+      backdrop-filter: blur(12px) saturate(180%);
+      -webkit-backdrop-filter: blur(12px) saturate(180%);
+      border: 1px solid rgba(209, 213, 219, 0.3);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+    }
+
+    h5 {
+      margin-top: 0;
+      font-size: 18px;
+    }
+
+    canvas {
+      width: 100% !important;
+      height: auto !important;
+    }
+
+    .quick-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .quick-actions button {
+      padding: 10px 15px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+    }
+
+    .quick-actions button i {
+      margin-right: 8px;
+      font-size: 16px;
+    }
+
+    .quick-actions button:hover {
+      background-color: #45a049;
+    }
+
+    /* Responsive: stack boxes on smaller screens */
+    @media (max-width: 1024px) {
+      .maincontent {
+        flex-direction: column;
+        height: auto;
+      }
+
+      .box-container {
+        width: 100%;
+      }
+    }
