@@ -10,7 +10,7 @@
                         
                     </header>
 
-                    <div class="box-container grid-item lorem-box-span item-1">
+                    <div class="box-container grid-item grid-item item-1">
                         <section class="overview">
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, eius ut at ratione aperiam qui accusamus sapiente magnam, rerum totam sunt quis non, natus tempora vel itaque voluptates nam reprehenderit.</p>
                         </section>
@@ -74,8 +74,8 @@
                         </section>
                     </div>
                     
-                    <div class="box-container grid-item">
-                        <section class="monthly-performance item-4">
+                    <div class="box-container grid-item item-4">
+                        <section class="monthly-performance">
                             <canvas id="myLineChart" width="400" height="200"></canvas>
                             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                             <!--Line Chart -->
@@ -101,8 +101,10 @@
                                 const myLineChart = new Chart(ctx, config);
                             </script>
                         </section>
+
                     </div>
                     
+                    <div class="box-container grid-item item-5"></div>
                 </div>
             </div>                    
     </div>
