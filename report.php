@@ -1,6 +1,6 @@
 <?php include 'sidebar.php' ?>
 
-    <link rel="stylesheet" href="report.css">
+    <link rel="stylesheet" href="asset/css/report.css">
 
     <div class="maincontent">
         <h3>Reports</h3>
@@ -10,14 +10,18 @@
                         
                     </header>
 
-                    <div class="box-container grid-item grid-item item-1">
+                    <div class="box-container grid-item item-1">
                         <section class="overview">
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, eius ut at ratione aperiam qui accusamus sapiente magnam, rerum totam sunt quis non, natus tempora vel itaque voluptates nam reprehenderit.</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae explicabo commodi rerum pariatur quis omnis vitae, atque libero numquam voluptate nihil quo, voluptates quidem. Veritatis doloribus nam natus accusamus deleniti.</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae explicabo commodi rerum pariatur quis omnis vitae, atque libero numquam voluptate nihil quo, voluptates quidem. Veritatis doloribus nam natus accusamus deleniti.</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae explicabo commodi rerum pariatur quis omnis vitae, atque libero numquam voluptate nihil quo, voluptates quidem. Veritatis doloribus nam natus accusamus deleniti.</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae explicabo commodi rerum pariatur quis omnis vitae, atque libero numquam voluptate nihil quo, voluptates quidem. Veritatis doloribus nam natus accusamus deleniti.</p>
                         </section>
                     </div>
   
                     <div class="box-container grid-item item-2">
-                        </section class="low-stock-performance">
+                        <section class="low-stock-performance">
                                 <canvas id="myBarChart" width="400" height="200"></canvas>
                                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                                 <!--Bar Chart -->
