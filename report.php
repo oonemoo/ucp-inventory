@@ -21,6 +21,7 @@
                     </div>
   
                     <div class="box-container grid-item item-2">
+                        <h1>Low Stock</h1>
                         <section class="low-stock-performance">
                                 <canvas id="myBarChart" width="400" height="200"></canvas>
                                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -79,6 +80,7 @@
                     </div>
                     
                     <div class="box-container grid-item item-4">
+                        <h1>Monthly Performance</h1>
                         <section class="monthly-performance">
                             <canvas id="myLineChart" width="400" height="200"></canvas>
                             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

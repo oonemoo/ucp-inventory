@@ -17,37 +17,45 @@
 <div class="maincontent">
 
   <div class="box-container">
-    <h5>Inventory Overview</h5>
-    <canvas id="myChart"></canvas>
+    <div class="box-1">
+      <h5>Inventory Overview</h5>
+      <canvas id="myChart"></canvas>
+      </div>
   </div>
 
   <div class="box-container">
-    <h5>Quick Actions</h5>
-    <div class="quick-actions">
-      <button onclick="location.href='add_item.php'">
-        <i class="fas fa-plus-circle"></i> Add New Item
-      </button>
-      <button onclick="location.href='add_supplier.php'">
-        <i class="fas fa-user-plus"></i> Add New Supplier
-      </button>
-      <button onclick="location.href='sales_report.php'">
-        <i class="fas fa-chart-line"></i> View Sales Report
-      </button>
-      <button onclick="location.href='low_stock.php'">
-        <i class="fas fa-box-open"></i> Check Low Stock
-      </button>
+    <div class="box-2">
+      <h5>Quick Actions</h5>
+      <div class="quick-actions">
+        <button onclick="location.href='add_item.php'">
+          <i class="fas fa-plus-circle"></i> Add New Item
+        </button>
+        <button onclick="location.href='add_supplier.php'">
+          <i class="fas fa-user-plus"></i> Add New Supplier
+        </button>
+        <button onclick="location.href='sales_report.php'">
+          <i class="fas fa-chart-line"></i> View Sales Report
+        </button>
+        <button onclick="location.href='low_stock.php'">
+          <i class="fas fa-box-open"></i> Check Low Stock
+        </button>
+      </div>
     </div>
   </div>
 
   <div class="box-container">
-    <h5>Recent Activity</h5>
+    <div class="box-3">
+      <h5>Recent Activity</h5>
 
-    <p>Showing recent user activity...</p>
+      <p>Showing recent user activity...</p>
+    </div>
   </div>
 
   <div class="box-container">
-    <h5>Stock Level</h5>
-    <p>Display stock levels or charts here.</p>
+    <div class="box-4">
+      <h5>Stock Level</h5>
+      <p>Display stock levels or charts here.</p>
+    </div>
   </div>
 
 </div>
